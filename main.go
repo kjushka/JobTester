@@ -2,7 +2,6 @@ package main
 
 import (
 	mod "./model"
-
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -202,7 +201,7 @@ func (h *Handler) GetWorker(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if role != 0 {
-		http.Redirect(w, r, "/home/company/" + username, http.StatusFound)
+		http.Redirect(w, r, "/home/company/"+username, http.StatusFound)
 	}
 	user, err := h.findUser(username)
 	if err != nil {
@@ -218,7 +217,7 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if role != 1 {
-		http.Redirect(w, r, "/home/worker/" + username, http.StatusFound)
+		http.Redirect(w, r, "/home/worker/"+username, http.StatusFound)
 	}
 	company, err := h.findUser(username)
 	if err != nil {
@@ -235,13 +234,12 @@ func (h *Handler) CreateBranch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	cRole, err := r.Cookie("user-role")
-	if role, atoiErr := strconv.Atoi(cRole.Value);
-		err == http.ErrNoCookie || role != 1 || atoiErr != nil {
+	if role, atoiErr := strconv.Atoi(cRole.Value); err == http.ErrNoCookie || role != 1 || atoiErr != nil {
 		if atoiErr != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		} else {
-			http.Redirect(w, r, "/home/worker/" + cName.Value, http.StatusFound)
+			http.Redirect(w, r, "/home/worker/"+cName.Value, http.StatusFound)
 			return
 		}
 	}
@@ -272,23 +270,23 @@ func (h *Handler) CreateBranch(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
-func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request)  {
+func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 
 }
 
 func main() {
-	dsn := "root:pass@tcp(localhost:3306)/amaker?" +
-		"&charset=utf8&interpolateParams=true"
-	db, err := sql.Open("mysql", dsn)
-	db.Ping()
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-	fmt.Println("Connected to db")
+	//dsn := "root:pass@tcp(localhost:3306)/amaker?" +
+	//	"&charset=utf8&interpolateParams=true"
+	//db, err := sql.Open("mysql", dsn)
+	//db.Ping()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//defer db.Close()
+	//fmt.Println("Connected to db")
 
 	handler := &Handler{
-		DB:   db,
+		//DB:   db,
 		Tmpl: template.Must(template.ParseGlob("./webapp/view/*")),
 	}
 	router := mux.NewRouter()
@@ -302,24 +300,24 @@ func main() {
 	router.HandleFunc("/home/company/{username}", handler.GetCompany).Methods("GET")
 	//router.HandleFunc("/home/company/{username}", handler.EditCompany).Methods("POST")
 
-	/*router.HandleFunc("/branches/{username}", handler.GetBranches).Methods("GET")
-	router.HandleFunc("/branches/{username}/{id}", handler.GetBranch).Methods("GET")
-	router.HandleFunc("/branches/{username}/{id}", handler.EditBranch).Methods("POST")
-	router.HandleFunc("/branches/{username}/{id}", handler.DeleteBranch).Methods("DELETE")
-	router.HandleFunc("/branches/{username}/create", handler.CreateBranch).Methods("POST")
+	//router.HandleFunc("/branches/{username}", handler.GetBranches).Methods("GET")
+	//router.HandleFunc("/branches/{username}/{id}", handler.GetBranch).Methods("GET")
+	//router.HandleFunc("/branches/{username}/{id}", handler.EditBranch).Methods("POST")
+	//router.HandleFunc("/branches/{username}/{id}", handler.DeleteBranch).Methods("DELETE")
+	//router.HandleFunc("/branches/{username}/create", handler.CreateBranch).Methods("POST")
+	//
+	//router.HandleFunc("{username}/answers", handler.GetAnswers).Methods("GET")
+	//router.HandleFunc("{username}/answers/{id}", handler.GetAnswer).Methods("GET")
+	//router.HandleFunc("{username}/answers/{id}/status", handler.SetAnswerStatus).Methods("POST")
+	//router.HandleFunc("{username}/answers/{id}/download", handler.DownloadAnswer).Methods("GET")
+	//
+	//router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
+	//router.HandleFunc("/companies/{id}", handler.GetCompany).Methods("GET")
+	//router.HandleFunc("/companies/{id}/request", handler.SendRequest).Methods("POST")
 
-	router.HandleFunc("{username}/answers", handler.GetAnswers).Methods("GET")
-	router.HandleFunc("{username}/answers/{id}", handler.GetAnswer).Methods("GET")
-	router.HandleFunc("{username}/answers/{id}/status", handler.SetAnswerStatus).Methods("POST")
-	router.HandleFunc("{username}/answers/{id}/download", handler.DownloadAnswer).Methods("GET")
-
-	router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
-	router.HandleFunc("/companies/{id}", handler.GetCompany).Methods("GET")
-	router.HandleFunc("/companies/{id}/request", handler.SendRequest).Methods("POST")
-
-	router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}", handler.GetRequest).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}/access", handler.SetBranchAccess).Methods("POST")*/
+	//router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{id}", handler.GetRequest).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{id}/access", handler.SetBranchAccess).Methods("POST")
 	fmt.Println("Listen port 8080")
 	http.ListenAndServe(":8080", router)
 }

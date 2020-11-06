@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/JobTester.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/project.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/company.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/worker.html" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/branch.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/branch.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/styles/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/view/branches.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/home.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/view/company.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/company.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +38,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
-        <option value="HTML File" />
         <option value="Go File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -43,13 +58,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/home.go" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\donto\go\src\JobTester" />
       <recent name="C:\Users\donto\go\src\AMaker\model" />
     </key>
   </component>
@@ -67,7 +85,7 @@
       <module name="JobTester" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/main.go" />
+      <filePath value="$PROJECT_DIR$/main.go|$PROJECT_DIR$/home.go" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
@@ -103,42 +121,53 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="783" y="373" key="#Go_Modules" timestamp="1603278166207">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="783" y="373" key="#Go_Modules/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1603278166207" />
-    <state x="445" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604649379709">
+    <state x="445" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604663555881">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="445" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604649379709" />
+    <state x="445" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604663555881" />
     <state x="700" y="166" key="#go_build_main.go" timestamp="1604649291656">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="700" y="166" key="#go_build_main.go/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604649291656" />
-    <state x="771" y="295" key="FileChooserDialogImpl" timestamp="1604661393058">
+    <state x="771" y="295" key="FileChooserDialogImpl" timestamp="1604663552411">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661393058" />
-    <state width="1815" height="295" key="GridCell.Tab.0.bottom" timestamp="1604661285449">
+    <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604663552411" />
+    <state width="1815" height="295" key="GridCell.Tab.0.bottom" timestamp="1604674995260">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661285449" />
-    <state width="1815" height="295" key="GridCell.Tab.0.center" timestamp="1604661285448">
+    <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604674995260" />
+    <state width="1815" height="295" key="GridCell.Tab.0.center" timestamp="1604674995259">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661285448" />
-    <state width="1815" height="295" key="GridCell.Tab.0.left" timestamp="1604661285448">
+    <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604674995259" />
+    <state width="1815" height="295" key="GridCell.Tab.0.left" timestamp="1604674995259">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661285448" />
-    <state width="1815" height="295" key="GridCell.Tab.0.right" timestamp="1604661285449">
+    <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604674995259" />
+    <state width="1815" height="295" key="GridCell.Tab.0.right" timestamp="1604674995260">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661285449" />
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1604653064391">
+    <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604674995260" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1604665019292">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604653064391" />
+    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604665019292" />
   </component>
 </project>

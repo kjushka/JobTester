@@ -169,7 +169,7 @@ func (h *Handler) Logout(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/home", http.StatusFound)
 }
 
-func checkCookie(w http.ResponseWriter, r *http.Request) (string, int, bool) {
+func (h *Handler) checkCookie(w http.ResponseWriter, r *http.Request) (string, int, bool) {
 	cName, err := r.Cookie("user-number")
 	if err == http.ErrNoCookie {
 		http.Redirect(w, r, "/home", http.StatusFound)
@@ -186,94 +186,6 @@ func checkCookie(w http.ResponseWriter, r *http.Request) (string, int, bool) {
 		return "", 0, false
 	}
 	return cName.Value, role, true
-}
-
-func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
-	err := h.Tmpl.ExecuteTemplate(w, "home.html", struct{}{})
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-}
-
-func (h *Handler) GetWorker(w http.ResponseWriter, r *http.Request) {
-	username, role, status := checkCookie(w, r)
-	if !status {
-		return
-	}
-	if role != 0 {
-		http.Redirect(w, r, "/home/company/" + username, http.StatusFound)
-	}
-	user, err := h.findUser(username)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	h.Tmpl.ExecuteTemplate(w, "worker.html", user)
-}
-
-func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
-	username, role, status := checkCookie(w, r)
-	if !status {
-		return
-	}
-	if role != 1 {
-		http.Redirect(w, r, "/home/worker/" + username, http.StatusFound)
-	}
-	company, err := h.findUser(username)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	h.Tmpl.ExecuteTemplate(w, "company.html", company)
-}
-
-func (h *Handler) CreateBranch(w http.ResponseWriter, r *http.Request) {
-	cName, err := r.Cookie("user-number")
-	if err == http.ErrNoCookie {
-		http.Redirect(w, r, "/home", http.StatusFound)
-		return
-	}
-	cRole, err := r.Cookie("user-role")
-	if role, atoiErr := strconv.Atoi(cRole.Value);
-		err == http.ErrNoCookie || role != 1 || atoiErr != nil {
-		if atoiErr != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		} else {
-			http.Redirect(w, r, "/home/worker/" + cName.Value, http.StatusFound)
-			return
-		}
-	}
-
-	user, err := h.findUser(cName.Value)
-
-	result, err := h.DB.Exec(
-		"INSERT INTO amaker.branch (`name`, `idcompany`) VALUES (?, ?)",
-		r.FormValue("name"),
-		user.Iduser,
-	)
-	if err != nil {
-		http.Error(w, err.Error(), 500)
-	}
-	affected, err := result.RowsAffected()
-	lastID, err := result.LastInsertId()
-	fmt.Println(affected, "rows affected and last ID is", lastID)
-	response := &Response{
-		Status:  true,
-		Message: "Branch created with success!",
-	}
-	jsonResponse, marshalError := json.Marshal(response)
-	if marshalError != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonResponse)
-}
-
-func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request)  {
-
 }
 
 func main() {
@@ -298,17 +210,17 @@ func main() {
 
 	router.HandleFunc("/home", handler.Home).Methods("GET")
 	router.HandleFunc("/home/worker/{username}", handler.GetWorker).Methods("GET")
-	//router.HandleFunc("/home/worker/{username}", handler.EditWorker).Methods("POST")
+	router.HandleFunc("/home/worker/{username}", handler.EditWorker).Methods("POST")
 	router.HandleFunc("/home/company/{username}", handler.GetCompany).Methods("GET")
-	//router.HandleFunc("/home/company/{username}", handler.EditCompany).Methods("POST")
+	router.HandleFunc("/home/company/{username}", handler.EditCompany).Methods("POST")
 
-	/*router.HandleFunc("/branches/{username}", handler.GetBranches).Methods("GET")
+	router.HandleFunc("/branches/{username}", handler.GetBranches).Methods("GET")
 	router.HandleFunc("/branches/{username}/{id}", handler.GetBranch).Methods("GET")
 	router.HandleFunc("/branches/{username}/{id}", handler.EditBranch).Methods("POST")
 	router.HandleFunc("/branches/{username}/{id}", handler.DeleteBranch).Methods("DELETE")
 	router.HandleFunc("/branches/{username}/create", handler.CreateBranch).Methods("POST")
 
-	router.HandleFunc("{username}/answers", handler.GetAnswers).Methods("GET")
+	/*router.HandleFunc("{username}/answers", handler.GetAnswers).Methods("GET")
 	router.HandleFunc("{username}/answers/{id}", handler.GetAnswer).Methods("GET")
 	router.HandleFunc("{username}/answers/{id}/status", handler.SetAnswerStatus).Methods("POST")
 	router.HandleFunc("{username}/answers/{id}/download", handler.DownloadAnswer).Methods("GET")

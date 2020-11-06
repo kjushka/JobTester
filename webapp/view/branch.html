@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../resources/braches.css">
+    <script src="../resources/braches.js"></script>
+    <title>BranchMain</title>
+</head>
+<body>
+    <div class="header border-bottom border-dark border-3">
+        <div class="container headerdiv">
+            <div  class=" col col-5 d-inline float-left h-100 clearfix position-relative" >
+                <div class="align-middle">
+                    <a id="hmenu" class="btn " >Home</a>
+                </div>
+            </div>
+            <div class="col col-7 d-inline float-right h-100 clearfix position-relative ">
+                    <ul class="headerUl">
+                        <li class="d-none">
+                            <p class="navbar-text">
+                                Welcome
+                                <span id="userinfo">Ivan Ivanov</span>
+                            </p>
+                            <p class="navbar-text"><a id="logout" href="#">Logout</a></p>
+                            <form id="logout-form"  method="post">
+                            </form>
+                        </li>
+                        <li class="d-inline mr-4">
+                            <a href="#" class="btn">Sign In</a>
+                        </li>
+                        <li class="d-inline ml-4">
+                            <a href="#" class="btn">Register</a>
+                        </li>
+
+                    </ul>
+            </div>
+         </div>
+    </div>
+    <div class="div1">
+        <div class="container a-c">
+            <h2 >Список веток</h2>
+        </div>
+    </div>
+    <div>
+        <div  class="container clearfix p-0">
+            <div class="position-relative clearfix ">
+            <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
+                <div class="h-100">
+                    <div class="position-relative branchtext">Frontend</div>
+                </div>  
+            </div>
+            <div class="branchDiv w-100  border border-2 float-left border-dark a-c d-inline position-relative">
+                <div class="h-100">
+                    <div class="position-relative branchtext">Back<br></div>
+                </div>
+            </div>
+            <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
+                <div class="h-100">
+                    <div class="position-relative branchtext">Tests<br></div>
+                </div>
+            </div>
+            </div>
+        </div>
+       <!-- {{renge .Branches}}
+        <div ></div>-->
+    </div>
+</body>
+</html>

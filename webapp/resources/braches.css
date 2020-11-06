@@ -1,0 +1,29 @@
+.headerdiv {
+    height: 40px;
+    position: relative;
+}
+.header {
+    border-bottom: 2px;
+}
+.headerUl {
+    text-align: end;
+}
+.div1 {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.a-c {
+    text-align: center;
+}
+.branchDiv {
+    font-size: 45px;
+    font-weight: 600;
+    text-align: center;
+    max-width: 360px;
+    margin: 0 10px;
+    min-height: 100px
+}
+.branchtext {
+    margin: 13px 0;
+    white-space: normalж
+}

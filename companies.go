@@ -129,7 +129,6 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 
 //Заявка на прохождение тестирования
 func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("aue")
 	username, role, status := h.checkCookie(w, r)
 
 	if !status {
@@ -162,10 +161,9 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 
 	var count int
 	err = answerFromCompany.Scan(&count)
-
 	if count == 0 {
 		_, err := h.DB.Exec(
-			"INSERT INTO amaker.request ('idbranch','iduser') VALUES (?,?)",
+			"INSERT INTO amaker.request (`idbranch`,`iduser`) VALUES (?,?)",
 			idBranch,
 			userInfom.Iduser,
 		)
@@ -174,5 +172,5 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	http.Redirect(w, r, "home/worker/"+username, 302)
+	http.Redirect(w, r, "/home/worker/"+username, http.StatusFound)
 }

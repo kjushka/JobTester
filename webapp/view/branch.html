@@ -70,6 +70,13 @@
             <div class="position-relative clearfix ">
                 {{range .Branches}}
                     <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
+                        <div class="position-absolute right-0 border border-1 border-dark del bg-danger" style="width: 40px; height: 40px; transform: rotate(-45deg);">
+                            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete">
+                            <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                                <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                            </div>
+                            </a>
+                        </div>
                         <a class="h-100 btn w-100" htef="{{.Id}}">
                             <div class="position-relative branchtext">{{.Name}}</div>
                         </a>  

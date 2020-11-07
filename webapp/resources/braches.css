@@ -66,6 +66,14 @@
     font-size: 45px;
     font-weight: 600;
 }
+.del {
+    display: none;
+    border-radius: 100px;
+}
+.branchDiv:hover .del {
+    display: block;
+}
+
 a {
     text-decoration: none;
 }

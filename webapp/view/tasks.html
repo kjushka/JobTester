@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
           integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="../resources/css.css" type="text/css"/>
+    <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
     <!--script src="../resources/js.js" type="text/javascript"></script-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
@@ -15,7 +15,45 @@
 
 
 <body>
-
+<div class="header border-bottom border-dark border-3">
+    <div class="container headerdiv">
+        <div class=" col col-2 d-inline float-left h-100 clearfix position-relative">
+            <div class="align-middle">
+                <a id="hmenu" class="btn " href="http://localhost:8080/home">Home</a>
+            </div>
+        </div>
+        <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
+            {{if eq .IsCompany 1}}
+                <div class=" btn d-inline mx-2 border border-1 border-dark">
+                    <a class="" href="http://localhost:8080/requests/{{.UName}}">Запросы</a>
+                </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="http://localhost:8080/answers/{{.UName}}">Ответы</a>
+                </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="http://localhost:8080/branches/{{.UName}}">Ветки</a>
+                </div>
+            {{else}}
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="#">Компании</a>
+                </div>
+            {{end}}
+        </div>
+        <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
+            <ul class="headerUl">
+                <li class="logout">
+                    <p class="navbar-text d-inline pr-4">
+                        Welcome
+                        <span id="userinfo">{{ .UName}}</span>
+                    </p>
+                    <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
+                    <form id="logout-form" method="post">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="col d-flex justify-content-center">
     <h2 class="display-2">
         {{.Branch.Name}}
@@ -32,8 +70,8 @@
             {{range .Tasks}}
                 <div class="col col-md-3">
                     <div class="card mycolor" data-toggle="modal" data-target="#modal1">
-                         <!--onmouseover="this.style.background='rgba(225,225,0,0.3)'"
-                         onmouseout="this.style.background='white'"--> <!--сюда должно приходить число(номер задания)-->
+                        <!--onmouseover="this.style.background='rgba(225,225,0,0.3)'"
+                        onmouseout="this.style.background='white'"--> <!--сюда должно приходить число(номер задания)-->
                         <div class="card-header text-center">Задание</div>
                         <!--сюда должно приходить число(номер задания)-->
                         <div class="card-body text-center">

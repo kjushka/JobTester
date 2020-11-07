@@ -245,6 +245,7 @@ func main() {
 	router.HandleFunc("/resources/branches.js", handler.SendBranchesJs)
 	router.HandleFunc("/resources/branches.css", handler.SendBranchesCss)
 	router.HandleFunc("/home/resources/branches.css", handler.SendBranchesCss)
+	router.HandleFunc("/branches/resources/branches.css", handler.SendBranchesCss)
 
 	fmt.Println("Listen port 8080")
 	http.ListenAndServe(":8080", router)

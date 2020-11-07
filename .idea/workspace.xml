@@ -19,28 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="server">
-      <change afterPath="$PROJECT_DIR$/answer.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/resources/branches.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/resources/branches.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/resources/css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/resources/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/view/answer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/view/answers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/view/tasks.html" afterDir="false" />
+    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="half-working server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/branch.go" beforeDir="false" afterPath="$PROJECT_DIR$/branch.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/home.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/branch.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/branch.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/project.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/styles/home.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/view/branches.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/branches.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/styles/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/resources/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/worker.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/worker.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/view/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/tasks.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +121,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server" />
-    <option name="LAST_COMMIT_MESSAGE" value="server" />
+    <MESSAGE value="half-working server" />
+    <option name="LAST_COMMIT_MESSAGE" value="half-working server" />
   </component>
   <component name="WindowStateProjectService">
     <state x="783" y="373" key="#Go_Modules" timestamp="1603278166207">
@@ -160,26 +145,26 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604732685082" />
-    <state width="1815" height="295" key="GridCell.Tab.0.bottom" timestamp="1604757958787">
+    <state width="1815" height="295" key="GridCell.Tab.0.bottom" timestamp="1604759095553">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604757958787" />
-    <state width="1815" height="295" key="GridCell.Tab.0.center" timestamp="1604757958786">
+    <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
+    <state width="1815" height="295" key="GridCell.Tab.0.center" timestamp="1604759095552">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604757958786" />
-    <state width="1815" height="295" key="GridCell.Tab.0.left" timestamp="1604757958786">
+    <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
+    <state width="1815" height="295" key="GridCell.Tab.0.left" timestamp="1604759095552">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604757958786" />
-    <state width="1815" height="295" key="GridCell.Tab.0.right" timestamp="1604757958787">
+    <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
+    <state width="1815" height="295" key="GridCell.Tab.0.right" timestamp="1604759095553">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604757958787" />
-    <state x="583" y="273" key="Vcs.Push.Dialog.v2" timestamp="1604675475668">
+    <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
+    <state x="583" y="273" key="Vcs.Push.Dialog.v2" timestamp="1604758177402">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="583" y="273" key="Vcs.Push.Dialog.v2/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604675475668" />
+    <state x="583" y="273" key="Vcs.Push.Dialog.v2/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604758177402" />
     <state x="792" y="328" key="git4idea.merge.GitMergeDialog" timestamp="1604675720006">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

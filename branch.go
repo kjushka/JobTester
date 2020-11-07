@@ -12,13 +12,15 @@ import (
 )
 
 type BranchesData struct {
-	Branches []*mod.Branch
-	UName    string
+	Branches  []*mod.Branch
+	UName     string
+	IsCompany int
 }
 
 type BranchData struct {
-	Branch *mod.Branch
-	UName  string
+	Branch    *mod.Branch
+	UName     string
+	IsCompany int
 }
 
 type customThemeAndTask struct {
@@ -74,8 +76,9 @@ func (h *Handler) GetBranches(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := &BranchesData{
-		Branches: branches,
-		UName:    username,
+		Branches:  branches,
+		UName:     username,
+		IsCompany: role,
 	}
 
 	h.Tmpl.ExecuteTemplate(w, "branches.html", data)
@@ -209,8 +212,9 @@ func (h *Handler) GetBranch(w http.ResponseWriter, r *http.Request) {
 	branch.Themes = themeSlice
 
 	branchData := &BranchData{
-		Branch: branch,
-		UName:  username,
+		Branch:    branch,
+		UName:     username,
+		IsCompany: role,
 	}
 
 	h.Tmpl.ExecuteTemplate(w, "tasks.html", branchData)

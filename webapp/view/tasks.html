@@ -4,59 +4,93 @@
     <title>Задания</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="../resources/braches.css" type="text/css"/>
-    <script src="../resources/branch.js" type="text/javascript"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
+    <!--script src="../resources/js.js" type="text/javascript"></script-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
 </head>
 
 
 <body>
-    <div class="header border-bottom border-dark border-3">
-        <div class="container headerdiv">
-            <div  class=" col col-5 d-inline float-left h-100 clearfix position-relative" >
-                <div class="align-middle">
-                    <a id="hmenu" class="btn " >Home</a>
+<div class="header border-bottom border-dark border-3">
+    <div class="container headerdiv">
+        <div class=" col col-2 d-inline float-left h-100 clearfix position-relative">
+            <div class="align-middle">
+                <a id="hmenu" class="btn " href="http://localhost:8080/home">Home</a>
+            </div>
+        </div>
+        <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
+            {{if eq .IsCompany 1}}
+                <div class=" btn d-inline mx-2 border border-1 border-dark">
+                    <a class="" href="http://localhost:8080/requests/{{.UName}}">Запросы</a>
                 </div>
-            </div>
-            <div class="col col-7 d-inline float-right h-100 clearfix position-relative ">
-                    <ul class="headerUl">
-                        <li class="logout">
-                            <p class="navbar-text d-inline pr-4">
-                                Welcome
-                                <span id="userinfo">{{.Username}}</span>
-                            </p>
-                            <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
-                            <form id="logout-form"  method="post">
-                            </form>
-                        </li>
-                    </ul>
-            </div>
-         </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="http://localhost:8080/answers/{{.UName}}">Ответы</a>
+                </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="http://localhost:8080/branches/{{.UName}}">Ветки</a>
+                </div>
+            {{else}}
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                    <a href="#">Компании</a>
+                </div>
+            {{end}}
+        </div>
+        <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
+            <ul class="headerUl">
+                <li class="logout">
+                    <p class="navbar-text d-inline pr-4">
+                        Welcome
+                        <span id="userinfo">{{ .UName}}</span>
+                    </p>
+                    <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
+                    <form id="logout-form" method="post">
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col d-flex justify-content-center">
-        <h2 class="display-2">
-                {{.Branch.Name}}
-        </h2>
-    </div>
-        {{range .Branches.Themes}}
-    <div class="container" style="height: 271px; position: relative; overflow: auto">
-            
-            <h3 class="display-5">
-                {{.Name}} <!--сюда должно приходить название темы-->
-            </h3>
-            
-            <div class="row row-cols-4 row-cols-md-3 g-2 d-flex justify-content-center">
-                <!-- Card to Open the Modal -->
+</div>
+<div class="col d-flex justify-content-center">
+    <h2 class="display-2">
+        {{.Branch.Name}}
+    </h2>
+</div>
+{{range .Branch.Themes}}
+    <div class="container theme" style="height: 271px; position: relative; overflow: auto">
+        <div id="delTheme" class="position-absolute border border-1 border-dark del deltheme bg-danger mt-1 mr-1" style=" right: 3%;width: 40px; height: 40px; transform: rotate(-45deg);">
+            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete">
+                <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                     <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                </div>
+            </a>
+        </div>
+        <h3 class="display-5">
+            {{.Name}} <!--сюда должно приходить название темы-->
+        </h3>
+
+        <div class="row row-cols-4 row-cols-md-3 g-2 d-flex justify-content-center">
+            <!-- Card to Open the Modal -->
+            {{range .Tasks}}
                 <div class="col col-md-3">
-                    
-                    <div class="card mycolor" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(номер задания)-->
-                        <div class="card-header text-center">Задание1</div> <!--сюда должно приходить число(номер задания)-->
+                    <div class="card mycolor task" data-toggle="modal" data-target="#modal1">
+                        <div id="deltask" class="position-absolute border border-1 border-dark del deltask bg-danger mt-1 mr-1" style=" right: 0;width: 30px; height: 30px; transform: rotate(-45deg);">
+                            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete">
+                                <div class=" position-relative btn" style="right: 38%; bottom: 23.4%;">
+                                    <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-header text-center">Задание</div>
+                        <!--сюда должно приходить число(номер задания)-->
                         <div class="card-body text-center">
-                            <p class="card-text">Краткая инфа</p> <!--сюда должно приходить краткое задание-->
+                            <p class="card-text">{{.Name}}</p> <!--сюда должно приходить краткое задание-->
                         </div>
                     </div>
-                    
+
                     <!-- The Modal -->
                     <div class="modal fade" id="modal1"> <!--сюда должно приходить число(номер задания)-->
                         <div class="modal-dialog  modal-lg">
@@ -64,23 +98,28 @@
 
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title text-center">Задание1</h4> <!--сюда должно приходить число(номер задания)-->
+                                    <h4 class="modal-title text-center">Задание</h4>
+                                    <!--сюда должно приходить число(номер задания)-->
                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                 </div>
 
                                 <!-- Modal body -->
                                 <div class="modal-body text-center">
-                                    <p class="card-text">Полная инфа</p> <!--сюда должно приходить полное задание-->
+                                    <p class="card-text">{{.Text}}</p> <!--сюда должно приходить полное задание-->
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-            </div>
-            
+            {{end}}
+        </div>
+
     </div>
-    {{end}}
-    </body>
+{{else}}
+    <div>No themes</div>
+{{end}}
+
+</body>
 </html>

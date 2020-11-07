@@ -73,6 +73,12 @@
 .branchDiv:hover .del {
     display: block;
 }
+.theme:hover .deltheme {
+    display:block;
+}
+.task:hover .deltask{
+    display: block;
+}
 
 a {
     text-decoration: none;

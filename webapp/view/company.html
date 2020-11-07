@@ -21,13 +21,11 @@
         <div class="container-fluid" style="position: relative; overflow: auto">
             <div class="row row-cols-4 row-cols-md-3 g-2 d-flex justify-content-center">
                 {{range .}}
-                <!-- Card to Open the Modal -->
                 <div class="col col-md-3">
-                    
                     <div class="card" onclick="document.location.href='companies/{{.Iduser}}'">
-                        <div class="card-header text-center">{{.Name}}</div> <!--сюда должно приходить число(номер задания)-->
+                        <div class="card-header text-center">{{.Name}}</div>
                         <div class="card-body text-center">
-                            <p class="card-text">{{.Name}}</p> <!--сюда должно приходить краткое описание компании-->
+                            <p class="card-text">{{.Name}}</p>
                         </div>
                     </div>
                     

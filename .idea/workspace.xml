@@ -19,14 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="half-working server">
+    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="1,2 in companies.go realized">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/companies.go" beforeDir="false" afterPath="$PROJECT_DIR$/companies.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/branch.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/branch.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/view/comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/comp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/view/company.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/company.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/worker.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/worker.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,6 @@
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -124,17 +123,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="server" />
     <MESSAGE value="half-working server" />
-    <option name="LAST_COMMIT_MESSAGE" value="half-working server" />
+    <MESSAGE value="1,2 in companies.go realized" />
+    <option name="LAST_COMMIT_MESSAGE" value="1,2 in companies.go realized" />
   </component>
   <component name="WindowStateProjectService">
     <state x="783" y="373" key="#Go_Modules" timestamp="1603278166207">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="783" y="373" key="#Go_Modules/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1603278166207" />
-    <state x="396" y="188" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604773357387">
+    <state x="341" y="361" key="#SQL_Dialects" timestamp="1604784359259">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="396" y="188" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604773357387" />
+    <state x="341" y="361" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1604784359259" />
+    <state x="396" y="188" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604784415830">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="396" y="188" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604784415830" />
     <state x="445" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604732685564" />
     <state x="721" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604743544505">
       <screen x="62" y="0" width="1858" height="1080" />
@@ -149,25 +153,25 @@
     </state>
     <state x="733" y="284" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604771889639" />
     <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604732685082" />
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom" timestamp="1604778205606">
+    <state width="1877" height="211" key="GridCell.Tab.0.bottom" timestamp="1604784867080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604778205606" />
+    <state width="1877" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
     <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
-    <state width="1877" height="204" key="GridCell.Tab.0.center" timestamp="1604778205606">
+    <state width="1877" height="211" key="GridCell.Tab.0.center" timestamp="1604784867080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604778205606" />
+    <state width="1877" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
     <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
-    <state width="1877" height="204" key="GridCell.Tab.0.left" timestamp="1604778205606">
+    <state width="1877" height="211" key="GridCell.Tab.0.left" timestamp="1604784867080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604778205606" />
+    <state width="1877" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
     <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
-    <state width="1877" height="204" key="GridCell.Tab.0.right" timestamp="1604778205606">
+    <state width="1877" height="211" key="GridCell.Tab.0.right" timestamp="1604784867080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="204" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604778205606" />
+    <state width="1877" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
     <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
     <state x="583" y="273" key="Vcs.Push.Dialog.v2" timestamp="1604758177402">
       <screen x="62" y="0" width="1858" height="1080" />

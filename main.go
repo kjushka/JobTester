@@ -233,8 +233,8 @@ func main() {
 	router.HandleFunc("/answers/{username}/{id}/download", handler.DownloadAnswer).Methods("GET")
 
 	router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
-	router.HandleFunc("/companies/{id}", handler.GetCompany).Methods("GET")
-	router.HandleFunc("/companies/{id}/request", handler.SendRequest).Methods("POST")
+	router.HandleFunc("/companies/{idComp}", handler.GetCompany).Methods("GET")
+	router.HandleFunc("/companies/{idComp}/{idBranch}/request", handler.SendRequest).Methods("GET")
 
 	//router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
 	//router.HandleFunc("/requests/{username}/{idBranch}", handler.GetRequest).Methods("GET")

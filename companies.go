@@ -10,6 +10,7 @@ import (
 
 type BranchesNew struct {
 	Branch *mod.Branch
+	Iduser int
 	Count  int
 }
 
@@ -50,6 +51,7 @@ func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 			&element.Name,
 			&element.IsCompany,
 		)
+
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -61,16 +63,32 @@ func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 
 //инф о конкретной компании
 func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
+
 	count := 0
 	vars := mux.Vars(r)
 
-	companyName, err := strconv.ParseInt(vars["id"], 10, 64)
+	companyName, err := strconv.Atoi(vars["idComp"])
 	if err != nil {
-		fmt.Printf("Error formatter from string to int in copanies %s", vars["id"])
+		fmt.Println("error")
 	}
 
+	companyRo := h.DB.QueryRow(
+		"SELECT * FROM amaker.user AS AU WHERE AU.iduser=?",
+		companyName,
+	)
+
+	company := &mod.User{}
+	err = companyRo.Scan(
+		&company.Iduser,
+		&company.Username,
+		&company.Password,
+		&company.Name,
+		&company.IsCompany,
+	)
+
+	fmt.Println(company)
 	branch, errbr := h.DB.Query(
-		"SELECT AB.idbranch, AB.name FROM amaker.branch AS AB WHERE AB.idcompany=?",
+		"SELECT * FROM amaker.branch AS AB WHERE AB.idcompany=?",
 		companyName,
 	)
 
@@ -87,34 +105,19 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 		element := &mod.Branch{}
 		err := branch.Scan(&element.Idbranch,
 			&element.Name,
+			&element.Idcompany,
 		)
 
 		if err != nil {
 			return
 		}
-		fmt.Println(element.String())
 		branchesArray = append(branchesArray, &BranchesNew{
 			Branch: element,
+			Iduser: company.Iduser,
 			Count:  count,
 		})
 		count++
 	}
-
-	companyRo := h.DB.QueryRow(
-		"SELECT * FROM amaker.user AS AU WHERE AU.iduser=?",
-		companyName,
-	)
-
-	company := &mod.User{}
-
-	err = companyRo.Scan(
-		&company.Iduser,
-		&company.Username,
-		&company.Password,
-		&company.Name,
-		&company.IsCompany,
-	)
-	fmt.Println(company.String())
 
 	branchComp := &BranchesCompany{
 		Branches: branchesArray,
@@ -126,6 +129,7 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 
 //Заявка на прохождение тестирования
 func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("aue")
 	username, role, status := h.checkCookie(w, r)
 
 	if !status {
@@ -146,8 +150,8 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 	mapfromPath := mux.Vars(r)
 	idBranch, err := strconv.ParseInt(mapfromPath["idBranch"], 10, 32)
 
-	if err == nil {
-		fmt.Printf("Error formatter from string to int in copanies %s", mapfromPath["idBranch"])
+	if err != nil {
+		fmt.Printf("1")
 	}
 
 	answerFromCompany := h.DB.QueryRow(
@@ -159,7 +163,7 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 	var count int
 	err = answerFromCompany.Scan(&count)
 
-	if count != 0 {
+	if count == 0 {
 		_, err := h.DB.Exec(
 			"INSERT INTO amaker.request ('idbranch','iduser') VALUES (?,?)",
 			idBranch,
@@ -170,4 +174,5 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+	http.Redirect(w, r, "home/worker/"+username, 302)
 }

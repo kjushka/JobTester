@@ -14,25 +14,24 @@
         
         <div class="col d-flex justify-content-center">
             <h2 class="display-2">
-                Название компании <!--сюда должно приходить название компании-->
+                {{.Company.Name}} <!--сюда должно приходить название компании-->
             </h2>
         </div>
         
         <div class="container-fluid" style="position: relative; overflow: auto">
-            
             <div class="row row-cols-5 row-cols-md-4 g-2 d-flex justify-content-center">
-                
-                <!-- Card to Open the Modal -->
+
+                {{range .Branches}}
                 <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
+
+                    <div class="card" data-toggle="modal" data-target="#modal{{.Count}}"> <!--сюда должно приходить число(колво веток)-->
                         <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
+                            <p class="card-text">{{.Branch.Name}}</p> <!--сюда должно приходить название ветки-->
                         </div>
                     </div>
                     
                     <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
+                    <div class="modal fade" id="modal{{.Count}}"> <!--сюда должно приходить число(колво веток)-->
                         <div class="modal-dialog  modal-md">
                             <div class="modal-content">
 
@@ -46,261 +45,11 @@
                                 <div class="modal-body text-center">
                                     <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-                <!-- Card to Open the Modal -->
-                <div class="col col-md-3">
-                    
-                    <div class="card" data-toggle="modal" data-target="#modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="card-body text-center">
-                            <p class="card-text">Название ветки</p> <!--сюда должно приходить название ветки-->
-                        </div>
-                    </div>
-                    
-                    <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
-                        <div class="modal-dialog  modal-md">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title text-center">Поработаем?</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body text-center">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Хочу работать!</button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
+                {{end}}
             </div>
             
         </div>

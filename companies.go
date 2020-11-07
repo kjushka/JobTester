@@ -8,8 +8,13 @@ import (
 	"strconv"
 )
 
+type BranchesNew struct {
+	Branch *mod.Branch
+	Count  int
+}
+
 type BranchesCompany struct {
-	Branches []*mod.Branch
+	Branches []*BranchesNew
 	Company  *mod.User
 }
 
@@ -51,52 +56,72 @@ func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 		}
 		companiesArray = append(companiesArray, element)
 	}
-	h.Tmpl.ExecuteTemplate(w, "companies.html", companiesArray)
+	h.Tmpl.ExecuteTemplate(w, "company.html", companiesArray)
 }
 
 //инф о конкретной компании
 func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
+	count := 0
 	vars := mux.Vars(r)
-	companyName := vars["username"]
+
+	companyName, err := strconv.ParseInt(vars["id"], 10, 64)
+	if err != nil {
+		fmt.Printf("Error formatter from string to int in copanies %s", vars["id"])
+	}
 
 	branch, errbr := h.DB.Query(
-		"SELECT AB.idbranch, AB.name FROM amaker.branch AS AB WHERE AB.idcompany=(SELECT AU.iduser FROM amaker.user AS AU WHERE AU.name=?)",
+		"SELECT AB.idbranch, AB.name FROM amaker.branch AS AB WHERE AB.idcompany=?",
 		companyName,
 	)
 
 	if errbr != nil {
+		fmt.Print("errooooooooooo")
 		return
 	}
 
 	defer branch.Close()
-	branchesArray := []*mod.Branch{}
+	branchesArray := []*BranchesNew{}
 
 	for branch.Next() {
+
 		element := &mod.Branch{}
 		err := branch.Scan(&element.Idbranch,
 			&element.Name,
-			&element.Idcompany,
 		)
 
 		if err != nil {
-			http.Error(w, errbr.Error(), http.StatusInternalServerError)
 			return
 		}
-		branchesArray = append(branchesArray, element)
+		fmt.Println(element.String())
+		branchesArray = append(branchesArray, &BranchesNew{
+			Branch: element,
+			Count:  count,
+		})
+		count++
 	}
 
-	companyRow, er := h.findUser(companyName)
-	if er != nil {
-		http.Error(w, er.Error(), http.StatusInternalServerError)
-		return
-	}
+	companyRo := h.DB.QueryRow(
+		"SELECT * FROM amaker.user AS AU WHERE AU.iduser=?",
+		companyName,
+	)
+
+	company := &mod.User{}
+
+	err = companyRo.Scan(
+		&company.Iduser,
+		&company.Username,
+		&company.Password,
+		&company.Name,
+		&company.IsCompany,
+	)
+	fmt.Println(company.String())
 
 	branchComp := &BranchesCompany{
 		Branches: branchesArray,
-		Company:  companyRow,
+		Company:  company,
 	}
 
-	h.Tmpl.ExecuteTemplate(w, "company.html", branchComp)
+	h.Tmpl.ExecuteTemplate(w, "comp.html", branchComp)
 }
 
 //Заявка на прохождение тестирования

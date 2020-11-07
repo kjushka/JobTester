@@ -14,27 +14,27 @@
         
         <div class="col d-flex justify-content-center">
             <h2 class="display-2">
-                Название компании <!--сюда должно приходить название компании-->
+                Kомпании <!--сюда должно приходить название компании-->
             </h2>
         </div>
         
         <div class="container-fluid" style="position: relative; overflow: auto">
-            
             <div class="row row-cols-4 row-cols-md-3 g-2 d-flex justify-content-center">
+                {{range .}}
                 <!-- Card to Open the Modal -->
                 <div class="col col-md-3">
                     
-                    <div class="card" onclick="document.location.href='comp.html'">
-                        <div class="card-header text-center">Название компании1</div> <!--сюда должно приходить число(номер задания)-->
+                    <div class="card" onclick="document.location.href='companies/{{.Iduser}}'">
+                        <div class="card-header text-center">{{.Name}}</div> <!--сюда должно приходить число(номер задания)-->
                         <div class="card-body text-center">
-                            <p class="card-text">Краткая инфа</p> <!--сюда должно приходить краткое описание компании-->
+                            <p class="card-text">{{.Name}}</p> <!--сюда должно приходить краткое описание компании-->
                         </div>
                     </div>
                     
                 </div>
-                
+                {{end}}
             </div>
-            
+
         </div>
         
     </body>

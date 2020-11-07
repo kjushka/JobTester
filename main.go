@@ -192,7 +192,7 @@ func (h *Handler) checkCookie(w http.ResponseWriter, r *http.Request) (string, i
 }
 
 func main() {
-	dsn := "root:pass@tcp(localhost:3306)/amaker?" +
+	dsn := "root:зфыы@tcp(localhost:3306)/amaker?" +
 		"&charset=utf8&interpolateParams=true&parseTime=true"
 	db, err := sql.Open("mysql", dsn)
 	db.Ping()
@@ -232,13 +232,13 @@ func main() {
 	router.HandleFunc("/answers/{username}/{id}/status", handler.SetAnswerStatus).Methods("POST")
 	router.HandleFunc("/answers/{username}/{id}/download", handler.DownloadAnswer).Methods("GET")
 
-	/*router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
+	router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
 	router.HandleFunc("/companies/{id}", handler.GetCompany).Methods("GET")
 	router.HandleFunc("/companies/{id}/request", handler.SendRequest).Methods("POST")
 
-	router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}", handler.GetRequest).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}/access", handler.SetBranchAccess).Methods("POST")*/
+	//router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{idBranch}", handler.GetRequest).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{idBranch}/access", handler.SetBranchAccess).Methods("POST")
 
 	router.HandleFunc("/resources/home.js", handler.SendHomeJs)
 	router.HandleFunc("/resources/css.css", handler.SendCssCss)

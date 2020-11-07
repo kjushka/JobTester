@@ -4,10 +4,10 @@
     <title>Задания</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
-    <!--script src="../resources/js.js" type="text/javascript"></script-->
+    <script src="../resources/branch.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
             crossorigin="anonymous"></script>
@@ -60,12 +60,55 @@
     </h2>
 </div>
   <div id="crTheme" class="position-absolute border border-1 border-dark del crtheme d-block bg-success" style=" right: 1%;width: 40px; height: 40px;">
-            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Создать новую тему">
+            
                 <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
                      <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
                 </div>
-            </a>
-        </div>  
+            
+        </div>
+     <div id="createThemeField" class="position-absolute w-100 top-0" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                                        <h2 class="text-danger createForm">Create themes form</h2>
+                                        <form class="createthemeForm createForm"  action="http://localhost:8080/login" method="post">
+                                            <div class="form-group createForm">
+                                                <label class="createForm" for="create">Name Theme</label>
+                                                    <input id="create" class="form-control createForm" name="username"/>
+                                            </div>
+                                            <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <div id="createTaskField" class="position-absolute w-100 top-0" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                                        <h2 class="text-danger createForm">Create themes form</h2>
+                                        <form class="createtaskForm createForm"  action="http://localhost:8080/login" method="post">
+                                            <div class="form-group createForm">
+                                                <label class="createForm" for="create">Name Task</label>
+                                                    <input id="create" class="form-control createForm" name="nametask"/>
+                                            </div>
+                                            <div class="form-group createForm">
+                                                <label class="createForm" for="create">Info Task</label>
+                                                    <input id="create" class="form-control createForm infotask" name="onfotask"/>
+                                            </div>
+                                             <div class="d-none form-group createForm">
+                                                    <input id="create" class="form-control createForm" name="idtheme"/>
+                                            </div>
+                                            <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 {{range .Branch.Themes}}
     <div class="container theme" style="height: 271px; position: relative; overflow: auto">
         <div id="delTheme" class="position-absolute border border-1 border-dark del deltheme bg-danger mt-1 mr-1" style=" right: 3%;width: 40px; height: 40px; transform: rotate(-45deg);">
@@ -76,11 +119,11 @@
             </a>
         </div>
         <div id="crTask" class="position-absolute border border-1 border-dark del crtask bg-success mt-1" style=" right: 8%;width: 40px; height: 40px;">
-            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Создать новое задание">
+            
                 <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
                      <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
                 </div>
-            </a>
+            
         </div>
         <h3 class="display-5">
             {{.Name}} <!--сюда должно приходить название темы-->

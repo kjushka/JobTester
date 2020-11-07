@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="1,2,3 in ,">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CompanyRequests.go" beforeDir="false" afterPath="$PROJECT_DIR$/CompanyRequests.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-    </list>
+    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="1,2,3 in ," />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,29 +146,30 @@
     </state>
     <state x="733" y="284" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604771889639" />
     <state x="771" y="295" key="FileChooserDialogImpl/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604732685082" />
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom" timestamp="1604784867080">
+    <state width="1877" height="85" key="GridCell.Tab.0.bottom" timestamp="1604786812271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
+    <state width="1877" height="85" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604786812271" />
     <state width="1815" height="295" key="GridCell.Tab.0.bottom/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
-    <state width="1877" height="211" key="GridCell.Tab.0.center" timestamp="1604784867080">
+    <state width="1877" height="85" key="GridCell.Tab.0.center" timestamp="1604786812271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
+    <state width="1877" height="85" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604786812271" />
     <state width="1815" height="295" key="GridCell.Tab.0.center/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
-    <state width="1877" height="211" key="GridCell.Tab.0.left" timestamp="1604784867080">
+    <state width="1877" height="85" key="GridCell.Tab.0.left" timestamp="1604786812271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
+    <state width="1877" height="85" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604786812271" />
     <state width="1815" height="295" key="GridCell.Tab.0.left/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095552" />
-    <state width="1877" height="211" key="GridCell.Tab.0.right" timestamp="1604784867080">
+    <state width="1877" height="85" key="GridCell.Tab.0.right" timestamp="1604786812271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604784867080" />
+    <state width="1877" height="85" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604786812271" />
     <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604759095553" />
-    <state x="583" y="273" key="Vcs.Push.Dialog.v2" timestamp="1604758177402">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="538" y="263" key="Vcs.Push.Dialog.v2" timestamp="1604786797144">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="538" y="263" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604786797144" />
     <state x="583" y="273" key="Vcs.Push.Dialog.v2/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604758177402" />
     <state x="792" y="328" key="git4idea.merge.GitMergeDialog" timestamp="1604675720006">
       <screen x="62" y="0" width="1858" height="1080" />

@@ -2,7 +2,6 @@ package model
 
 type Request struct {
 	IdRequest int
-	IdComp    int
+	Idbranch  int
 	IdUser    int
-	Status    int
 }

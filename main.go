@@ -213,7 +213,7 @@ func main() {
 
 	router.HandleFunc("/home", handler.Home).Methods("GET")
 	router.HandleFunc("/home/worker/{username}", handler.GetWorker).Methods("GET")
-	//router.HandleFunc("/home/worker/{username}", handler.EditWorker).Methods("POST")
+
 	router.HandleFunc("/home/company/{username}", handler.GetCompany).Methods("GET")
 	//router.HandleFunc("/home/company/{username}", handler.EditCompany).Methods("POST")
 
@@ -227,14 +227,20 @@ func main() {
 	//router.HandleFunc("{username}/answers/{id}", handler.GetAnswer).Methods("GET")
 	//router.HandleFunc("{username}/answers/{id}/status", handler.SetAnswerStatus).Methods("POST")
 	//router.HandleFunc("{username}/answers/{id}/download", handler.DownloadAnswer).Methods("GET")
-	//
+
+	//тест
 	router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
-	router.HandleFunc("/company/{id}", handler.GetCompany).Methods("GET")
-	router.HandleFunc("/company/{id}/request", handler.SendRequest).Methods("POST")
+	router.HandleFunc("/companies/{username}", handler.GetCompany).Methods("GET")
+	router.HandleFunc("/companies/{username}/{idBranch}", handler.SendRequest).Methods("POST")
+
 	//
 	//router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
+	////все запросы для компании
 	//router.HandleFunc("/requests/{username}/{id}", handler.GetRequest).Methods("GET")
+	////отдельно запрос по id
 	//router.HandleFunc("/requests/{username}/{id}/access", handler.SetBranchAccess).Methods("POST")
+	////меняем статус
+	//router.HandleFunc("/worker/{username}", handler.GetCurrentWorker).Methods("GET")
 	fmt.Println("Listen port 8080")
 	http.ListenAndServe(":8080", router)
 }

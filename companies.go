@@ -2,7 +2,6 @@ package main
 
 import (
 	mod "./model"
-	"database/sql"
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -14,6 +13,7 @@ type BranchesCompany struct {
 	Company  *mod.User
 }
 
+//Получение всех компаний
 func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 	username, role, status := h.checkCookie(w, r)
 
@@ -27,12 +27,13 @@ func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rows, err := h.DB.Query(
-		"SELECT * FROM amaker.user WHERE user.isCompany=1",
+		"SELECT * FROM amaker.user AS AU WHERE AU.isCompany=1",
 	)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
 	defer rows.Close()
 	companiesArray := []*mod.User{}
 
@@ -53,18 +54,18 @@ func (h *Handler) GetCompanies(w http.ResponseWriter, r *http.Request) {
 	h.Tmpl.ExecuteTemplate(w, "companies.html", companiesArray)
 }
 
-//инф о конкретоной компании
+//инф о конкретной компании
 func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	idcompany, err := strconv.ParseInt(vars["id"], 10, 32)
+	companyName := vars["username"]
 
 	branch, errbr := h.DB.Query(
-		"SELECT AB.idbranch, AB.name FROM amaker.branch AS AB WHERE AB.idcompany=?",
-		idcompany,
+		"SELECT AB.idbranch, AB.name FROM amaker.branch AS AB WHERE AB.idcompany=(SELECT AU.iduser FROM amaker.user AS AU WHERE AU.name=?)",
+		companyName,
 	)
 
 	if errbr != nil {
-
+		return
 	}
 
 	defer branch.Close()
@@ -84,35 +85,23 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 		branchesArray = append(branchesArray, element)
 	}
 
-	companyRow := h.DB.QueryRow(
-		"SELECT  * FROM amaker.user AS AU WHERE AU.iduser=?",
-		idcompany,
-	)
-
-	company := &mod.User{}
-	err = companyRow.Scan(&company.Iduser,
-		&company.Username,
-		&company.Password,
-		&company.Name,
-		&company.IsCompany,
-	)
-
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+	companyRow, er := h.findUser(companyName)
+	if er != nil {
+		http.Error(w, er.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	branchComp := &BranchesCompany{
 		Branches: branchesArray,
-		Company:  company,
+		Company:  companyRow,
 	}
 
 	h.Tmpl.ExecuteTemplate(w, "company.html", branchComp)
 }
 
+//Заявка на прохождение тестирования
 func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 	username, role, status := h.checkCookie(w, r)
-	statusForRequest := 0
 
 	if !status {
 		return
@@ -123,55 +112,37 @@ func (h *Handler) SendRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mapfromPath := mux.Vars(r)
-	idcompany, err := strconv.ParseInt(mapfromPath["id"], 10, 32)
-
-	if err == nil {
-		fmt.Printf("Error formatter from string to int in copanies %s", mapfromPath["id"])
-	}
-
-	companyRow := h.DB.QueryRow(
-		"SELECT  AU.iduser FROM amaker.user AS AU WHERE AU.username=?",
-		username,
-	)
-
-	idUser := &mod.User{}
-	err = companyRow.Scan(&idUser.Iduser)
-
+	userInfom, err := h.findUser(username)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	answerFromCompany := h.DB.QueryRow(
-		"SELECT  AR.status FROM amaker.request AS AR WHERE AR.idcomp=? AND AR.iduser=? AND AR.status IN (0,1)",
-		idcompany,
-		idUser,
-	)
+	mapfromPath := mux.Vars(r)
+	idBranch, err := strconv.ParseInt(mapfromPath["idBranch"], 10, 32)
 
-	statusFromDB := &mod.Request{}
-	err = answerFromCompany.Scan(&statusFromDB.Status)
-
-	if err != nil {
-		if err != sql.ErrNoRows {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		} else {
-			_, err := h.DB.Exec(
-				"INSERT INTO amaker.request ('idcomp','iduser', 'status') VALUES (?,?,?)",
-				idcompany,
-				idUser,
-				statusForRequest,
-			)
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-		}
-	} else {
-		if statusFromDB.Status < 2 {
-			w.Write([]byte("Sorry no vi uge otpravily zapros"))
-		}
+	if err == nil {
+		fmt.Printf("Error formatter from string to int in copanies %s", mapfromPath["idBranch"])
 	}
 
+	answerFromCompany := h.DB.QueryRow(
+		"SELECT COUNT(*) FROM amaker.request AS AR WHERE AR.idbranch=? AND AR.iduser=?",
+		idBranch,
+		userInfom.Iduser,
+	)
+
+	var count int
+	err = answerFromCompany.Scan(&count)
+
+	if count != 0 {
+		_, err := h.DB.Exec(
+			"INSERT INTO amaker.request ('idbranch','iduser') VALUES (?,?)",
+			idBranch,
+			userInfom.Iduser,
+		)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
 }

@@ -19,14 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="Jaba first">
-      <change afterPath="$PROJECT_DIR$/companies.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webapp/view/companies.html" afterDir="false" />
+    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="Jaba companies.go and new request model">
+      <change afterPath="$PROJECT_DIR$/CompanyRequests.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/branch.go" beforeDir="false" afterPath="$PROJECT_DIR$/branch.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.go" beforeDir="false" afterPath="$PROJECT_DIR$/home.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companies.go" beforeDir="false" afterPath="$PROJECT_DIR$/companies.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/branch.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/branch.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/request.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +131,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Jaba first" />
-    <option name="LAST_COMMIT_MESSAGE" value="Jaba first" />
+    <MESSAGE value="Jaba companies.go and new request model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jaba companies.go and new request model" />
   </component>
   <component name="WindowStateProjectService">
     <state x="783" y="373" key="#Go_Modules" timestamp="1603278166207">
@@ -175,6 +175,10 @@
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604680121535" />
     <state width="1815" height="295" key="GridCell.Tab.0.right/62.0.1858.1080/1982.0.1858.1080@62.0.1858.1080" timestamp="1604661285449" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1604741795764">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604741795764" />
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1604653064391">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

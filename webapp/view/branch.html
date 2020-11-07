@@ -28,16 +28,65 @@
                             </form>
                         </li>
                         <li class="d-inline mr-4">
-                            <a href="#" class="btn">Sign In</a>
+                            <a id="loginopen" href="#" class="btn">Sign In</a>
                         </li>
                         <li class="d-inline ml-4">
-                            <a href="#" class="btn">Register</a>
+                            <a id="regopen" href="#" class="btn">Register</a>
                         </li>
 
                     </ul>
             </div>
          </div>
     </div>
+    <div id="loginField" class="position-absolute w-100" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 loginForm" style="width: 400px;">
+                                        <h2 class="text-danger loginForm">Login form</h2>
+                                        <form class="loginForm"  action="localhost:8080/login" method="post">
+                                            <div class="form-group loginForm">
+                                                <label class="loginForm" for="login">Username</label>
+                                                    <input id="login" class="form-control loginForm" name="custom_username"/>
+                                            </div>
+                                            <div class="form-group loginForm">
+                                                <label class="loginForm" for="pass">Password</label>
+                                                <input id="pass" type="password" class="form-control loginForm" name="custom_password"/>
+                                            </div>
+                                            <button type="submit" id="btn-save" class="btn btn-primary mt-3">Login</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <div id="registrField" class="position-absolute w-100" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 regForm" style="width: 400px;">
+                                        <h2 class="text-danger regForm">Registred form</h2>
+                                        <form class="regForm"  action="localhost:8080/login" method="post">
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="login">Username</label>
+                                                    <input id="login" class="form-control regForm" name="custom_username"/>
+                                            </div>
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="pass">Password</label>
+                                                <input id="pass" type="password" class="form-control regForm" name="custom_password"/>
+                                            </div>
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="pass">Name</label>
+                                                <input class="form-control regForm" name="custo_name"/>
+                                            </div>
+                                            <p class="regForm mt-4"><input class="regForm" type="checkbox" name="company">Is Company</p>
+                                            <button type="submit" id="btn-save" class="btn btn-primary mt-3">Login</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
     <div class="div1">
         <div class="container a-c">
             <h2 >Список веток</h2>
@@ -46,25 +95,17 @@
     <div>
         <div  class="container clearfix p-0">
             <div class="position-relative clearfix ">
-            <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
-                <div class="h-100">
-                    <div class="position-relative branchtext">Frontend</div>
-                </div>  
-            </div>
-            <div class="branchDiv w-100  border border-2 float-left border-dark a-c d-inline position-relative">
-                <div class="h-100">
-                    <div class="position-relative branchtext">Back<br></div>
-                </div>
-            </div>
-            <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
-                <div class="h-100">
-                    <div class="position-relative branchtext">Tests<br></div>
-                </div>
-            </div>
+                
+                    <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative">
+                        <a class="h-100 btn w-100" htef="{{.Id}}">
+                            <div class="position-relative branchtext">{{.Name}}</div>
+                        </a>  
+                    </div>
+                
             </div>
         </div>
-       <!-- {{renge .Branches}}
-        <div ></div>-->
+       
+        <div ></div>
     </div>
 </body>
 </html>

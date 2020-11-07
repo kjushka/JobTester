@@ -18,4 +18,7 @@ window.onload = function(){
             modalreg.style.display = "none";  }      
         }
     };
+    let btnlog = document.getElementById("btn-login");
+    let btnreg = document.getElementById("btn-reg");
+    
 }

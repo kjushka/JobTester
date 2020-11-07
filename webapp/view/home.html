@@ -5,6 +5,84 @@
     <title>Home</title>
 </head>
 <body>
+    <div class="header border-bottom border-dark border-3">
+        <div class="container headerdiv">
+            <div  class=" col col-5 d-inline float-left h-100 clearfix position-relative" >
+                <div class="align-middle">
+                    <a id="hmenu" class="btn " >Home</a>
+                </div>
+            </div>
+            <div class="col col-7 d-inline float-right h-100 clearfix position-relative ">
+                    <ul class="headerUl">
+                        <li class="d-none">
+                            <p class="navbar-text">
+                                Welcome
+                                <span id="userinfo">Ivan Ivanov</span>
+                            </p>
+                            <p class="navbar-text"><a id="logout" href="#">Logout</a></p>
+                            <form id="logout-form"  method="post">
+                            </form>
+                        </li>
+                        <li class="d-inline mr-4">
+                            <a id="loginopen" href="#" class="btn">Sign In</a>
+                        </li>
+                        <li class="d-inline ml-4">
+                            <a id="regopen" href="#" class="btn">Register</a>
+                        </li>
+
+                    </ul>
+            </div>
+         </div>
+    </div>
+    <div id="loginField" class="position-absolute w-100" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 loginForm" style="width: 400px;">
+                                        <h2 class="text-danger loginForm">Login form</h2>
+                                        <form class="loginForm"  action="localhost:8080/login" method="post">
+                                            <div class="form-group loginForm">
+                                                <label class="loginForm" for="login">Username</label>
+                                                    <input id="login" class="form-control loginForm" name="custom_username"/>
+                                            </div>
+                                            <div class="form-group loginForm">
+                                                <label class="loginForm" for="pass">Password</label>
+                                                <input id="pass" type="password" class="form-control loginForm" name="custom_password"/>
+                                            </div>
+                                            <button type="submit" id="btn-login" class="btn btn-primary mt-3">Login</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    <div id="registrField" class="position-absolute w-100" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 regForm" style="width: 400px;">
+                                        <h2 class="text-danger regForm">Registred form</h2>
+                                        <form class="regForm"  action="localhost:8080/login" method="post">
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="login">Username</label>
+                                                    <input id="login" class="form-control regForm" name="custom_username"/>
+                                            </div>
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="pass">Password</label>
+                                                <input id="pass" type="password" class="form-control regForm" name="custom_password"/>
+                                            </div>
+                                            <div class="form-group regForm">
+                                                <label class="regForm" for="pass">Name</label>
+                                                <input class="form-control regForm" name="custo_name"/>
+                                            </div>
+                                            <p class="regForm mt-4"><input class="regForm" type="checkbox" name="company">Is Company</p>
+                                            <button type="submit" id="btn-reg" class="btn btn-primary mt-3">Login</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 <div>Home Page</div>
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Ответы</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <link rel="stylesheet" href="css4.css" type="text/css"/>
+        <script src="js4.js" type="text/javascript"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+        <div class="col d-flex justify-content-center">
+            <h2 class="display-2">
+                Ответы
+            </h2>
+        </div>
+
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th scope="col">Задание</th>
+                    <th scope="col">Отправитель</th>
+                    <th scope="col">Краткая информация</th>
+                    <th scope="col">Ответ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr data-toggle="modal" data-target="#modal1">
+                    <th scope="row">1</th>
+                    <td>kju</td>
+                    <td>Метод пузырька</td>
+                    <td>трололлололололлоол</td>
+                </tr>
+            <div class="modal fade" id="modal1"> <!--сюда должно приходить число(колво веток)-->
+                <div class="modal-dialog  modal-md">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title text-center">Принимаем?</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body text-center">
+                            <button type="button" class="btn btn-light" data-dismiss="modal" onmouseover="this.style.background = 'rgba(0,225,0,0.3)'" onmouseout="this.style.background = '#f8f9fa'">Правильно</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal" onmouseover="this.style.background = 'rgba(225,0,0,0.3)'" onmouseout="this.style.background = '#f8f9fa'">Неправильно</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>

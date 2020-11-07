@@ -16,6 +16,7 @@
                     <a id="hmenu" class="btn " >Home</a>
                 </div>
             </div>
+            {{if eq {{.IsCompany}} 0}}
             <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
                 <div class=" btn d-inline mx-2 border border-1 border-dark">
                     <a class="" href="http://localhost:8080/requests/{{.Username}}">Запросы</a>
@@ -27,6 +28,7 @@
                     <a href="http://localhost:8080/branches/{{.Username}}">Ветки</a>
                 </div>
             </div>
+            {{end}}
             <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
                     <ul class="headerUl">
                         <li class="logout">

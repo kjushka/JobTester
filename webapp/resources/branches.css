@@ -76,7 +76,10 @@
 .theme:hover .deltheme {
     display:block;
 }
-.task:hover .deltask{
+.theme:hover .crtask {
+    display: block;
+}
+.task:hover .deltask {
     display: block;
 }
 

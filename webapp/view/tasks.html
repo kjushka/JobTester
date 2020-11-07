@@ -59,10 +59,24 @@
         {{.Branch.Name}}
     </h2>
 </div>
+  <div id="crTheme" class="position-absolute border border-1 border-dark del crtheme d-block bg-success" style=" right: 1%;width: 40px; height: 40px;">
+            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Создать новую тему">
+                <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                     <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                </div>
+            </a>
+        </div>  
 {{range .Branch.Themes}}
     <div class="container theme" style="height: 271px; position: relative; overflow: auto">
         <div id="delTheme" class="position-absolute border border-1 border-dark del deltheme bg-danger mt-1 mr-1" style=" right: 3%;width: 40px; height: 40px; transform: rotate(-45deg);">
-            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete">
+            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Удалить тему">
+                <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                     <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                </div>
+            </a>
+        </div>
+        <div id="crTask" class="position-absolute border border-1 border-dark del crtask bg-success mt-1" style=" right: 8%;width: 40px; height: 40px;">
+            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Создать новое задание">
                 <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
                      <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
                 </div>
@@ -78,9 +92,9 @@
                 <div class="col col-md-3">
                     <div class="card mycolor task" data-toggle="modal" data-target="#modal1">
                         <div id="deltask" class="position-absolute border border-1 border-dark del deltask bg-danger mt-1 mr-1" style=" right: 0;width: 30px; height: 30px; transform: rotate(-45deg);">
-                            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete">
+                            <a href="http://localhost8080/branches/{{.Username}}/{{.Idbranch}}/delete" title="Удалить задание">
                                 <div class=" position-relative btn" style="right: 38%; bottom: 23.4%;">
-                                    <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class> <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
+                                    <svg  width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" > <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g> </svg>
                                 </div>
                             </a>
                         </div>

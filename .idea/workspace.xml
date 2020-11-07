@@ -19,14 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="1,2 in companies.go realized">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="b1d52819-c18e-499d-a7a7-60783e3a284c" name="Default Changelist" comment="1,2,3 in ,">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/companies.go" beforeDir="false" afterPath="$PROJECT_DIR$/companies.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompanyRequests.go" beforeDir="false" afterPath="$PROJECT_DIR$/CompanyRequests.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/comp.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/comp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/view/company.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/view/company.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +120,8 @@
     <MESSAGE value="server" />
     <MESSAGE value="half-working server" />
     <MESSAGE value="1,2 in companies.go realized" />
-    <option name="LAST_COMMIT_MESSAGE" value="1,2 in companies.go realized" />
+    <MESSAGE value="1,2,3 in ," />
+    <option name="LAST_COMMIT_MESSAGE" value="1,2,3 in ," />
   </component>
   <component name="WindowStateProjectService">
     <state x="783" y="373" key="#Go_Modules" timestamp="1603278166207">

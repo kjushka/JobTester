@@ -236,9 +236,9 @@ func main() {
 	router.HandleFunc("/companies/{idComp}", handler.GetCompany).Methods("GET")
 	router.HandleFunc("/companies/{idComp}/{idBranch}/request", handler.SendRequest).Methods("GET")
 
-	//router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
-	//router.HandleFunc("/requests/{username}/{idBranch}", handler.GetRequest).Methods("GET")
-	//router.HandleFunc("/requests/{username}/{idBranch}/access", handler.SetBranchAccess).Methods("POST")
+	router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
+	router.HandleFunc("/requests/{username}/{idBranch}", handler.GetRequest).Methods("GET")
+	router.HandleFunc("/requests/{username}/{idBranch}/access", handler.SetBranchAccess).Methods("POST")
 
 	router.HandleFunc("/resources/home.js", handler.SendHomeJs)
 	router.HandleFunc("/resources/css.css", handler.SendCssCss)

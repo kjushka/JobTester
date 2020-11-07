@@ -1,22 +1,45 @@
 package main
 
 import (
-	mod "./model"
 	"database/sql"
-	"encoding/json"
-	"fmt"
 	"net/http"
+	"strconv"
 )
 
+type LogErr struct {
+	Error string
+}
+
 func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
-	err := h.Tmpl.ExecuteTemplate(w, "home.html", struct{}{})
+	cName, err := r.Cookie("user-name")
+	if err != http.ErrNoCookie {
+		cRole, err := r.Cookie("user-role")
+		if err != http.ErrNoCookie {
+			role, atoiErr := strconv.Atoi(cRole.Value)
+			if atoiErr != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			if role == 0 {
+				http.Redirect(w, r, "/home/worker/"+cName.Value, http.StatusFound)
+				return
+			} else {
+				http.Redirect(w, r, "/home/company/"+cName.Value, http.StatusFound)
+				return
+			}
+		}
+	}
+
+	err = h.Tmpl.ExecuteTemplate(w, "home.html", LogErr{
+		Error: "",
+	})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
 
-func (h *Handler) GetWorker(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) HomeWorker(w http.ResponseWriter, r *http.Request) {
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return
@@ -42,27 +65,15 @@ func (h *Handler) EditWorker(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/home/company/"+username, http.StatusFound)
 		return
 	}
-	result, err := h.updateUser(w, r)
+	_, err := h.updateUser(w, r, username)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Println(result.LastInsertId())
-	fmt.Println(result.RowsAffected())
-	response := &Response{
-		Status:  true,
-		Message: "Update successfully!",
-	}
-	jsonResponse, marshalError := json.Marshal(response)
-	if marshalError != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonResponse)
+	http.Redirect(w, r, "/home/company/"+username, 302)
 }
 
-func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) HomeCompany(w http.ResponseWriter, r *http.Request) {
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return
@@ -76,7 +87,7 @@ func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	h.Tmpl.ExecuteTemplate(w, "company.html", company)
+	h.Tmpl.ExecuteTemplate(w, "worker.html", company)
 }
 
 func (h *Handler) EditCompany(w http.ResponseWriter, r *http.Request) {
@@ -88,39 +99,27 @@ func (h *Handler) EditCompany(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/home/worker/"+username, http.StatusFound)
 		return
 	}
-	result, err := h.updateUser(w, r)
+	_, err := h.updateUser(w, r, username)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Println(result.LastInsertId())
-	fmt.Println(result.RowsAffected())
-	response := &Response{
-		Status:  true,
-		Message: "Update successfully!",
-	}
-	jsonResponse, marshalError := json.Marshal(response)
-	if marshalError != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonResponse)
+	http.Redirect(w, r, "/home/company/"+username, 302)
 }
 
-func (h *Handler) updateUser(w http.ResponseWriter, r *http.Request) (sql.Result, error) {
-	decoder := json.NewDecoder(r.Body)
-	worker := &mod.User{}
-	err := decoder.Decode(&worker)
+func (h *Handler) updateUser(w http.ResponseWriter, r *http.Request, username string) (sql.Result, error) {
+	name := r.FormValue("name")
+	if name == "" {
+		return nil, nil
+	}
+	worker, err := h.findUser(username)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return nil, err
 	}
 	result, err := h.DB.Exec(
-		"update amaker.user as u where username = ?, password = ?, name = ? where u.iduser = ?",
-		worker.Username,
-		worker.Password,
-		worker.Name,
+		"update amaker.user as u set name = ? where u.iduser = ?",
+		name,
 		worker.Iduser,
 	)
 	return result, err

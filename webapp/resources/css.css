@@ -1,0 +1,5 @@
+/*.card:hover {
+    background: rgba(225,225,0,0.3); жёлтый - проверка
+    background: rgba(225,0,0,0.3); красный - не прошло
+    background: rgba(0,225,0,0.3); зелёный - прошло
+}*/

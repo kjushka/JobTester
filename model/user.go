@@ -1,10 +1,10 @@
 package model
 
 type User struct {
-	Iduser int
-	Username string
-	Password string
-	Name string
+	Iduser    int
+	Username  string
+	Password  string
+	Name      string
 	IsCompany int
 }
 

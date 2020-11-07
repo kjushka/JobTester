@@ -1,10 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../resources/braches.css">
+    <script src="../resources/worker.js"></script>
+    <title>BranchMain</title>
 </head>
 <body>
-
+    <div class="header border-bottom border-dark border-3">
+        <div class="container headerdiv">
+            <div  class=" col col-2 d-inline float-left h-100 clearfix position-relative" >
+                <div class="align-middle">
+                    <a id="hmenu" class="btn " >Home</a>
+                </div>
+            </div>
+            <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
+                <div class=" btn d-inline mx-2 border border-1 border-dark">
+                    <a class="" href="http://localhost:8080/requests/{{.Username}}">Запросы</a>
+                </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark"> 
+                    <a href="http://localhost:8080/answers/{{.Username}}">Ответы</a>
+                </div>
+                <div class="h-100 btn d-inline mx-2 border border-1 border-dark"> 
+                    <a href="http://localhost:8080/branches/{{.Username}}">Ветки</a>
+                </div>
+            </div>
+            <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
+                    <ul class="headerUl">
+                        <li class="logout">
+                            <p class="navbar-text d-inline pr-4">
+                                Welcome
+                                <span id="userinfo">{{ .Username}}</span>
+                            </p>
+                            <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
+                            <form id="logout-form"  method="post">
+                            </form>
+                        </li>
+                    </ul>
+            </div>
+         </div>
+    </div>
+    <div class="div1">
+        <div class="container a-c">
+            <h2 >Welcome {{.Username}}</h2>
+        </div>
+    </div>
+    <div>
+        <div  class="container clearfix p-0">
+            <div class="position-relative clearfix ">
+                <form class="loginForm" {{if eq .IsCompany 0}} action="localhost:8080/home/worker/{{ .Username}}" {{else}} action="localhost:8080/home/company/{{ .Username}}" {{end}} method="post">
+                    <div class="form-group loginForm mb-4">
+                        <label  for="username">New Username</label>
+                            <input id="username" class="form-control loginForm" name="username" style="max-width: 360px;"/>
+                    </div>
+                    <div class="d-none">
+                        <label  for="username">Info</label>
+                        <div>
+                        <textarea style=" width: 400px; height: 200px;">
+                        
+                        </textarea>
+                        </div>
+                    </div>
+                     <button type="submit" id="btn-login" class="btn btn-primary mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+       
+        <div ></div>
+    </div>
 </body>
 </html>

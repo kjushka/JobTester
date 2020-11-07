@@ -92,6 +92,35 @@
             <h2 >Список веток</h2>
         </div>
     </div>
+    <div class="my_plus">
+        <div class="container headerUl">
+            <div class="position-relative d-table align-end m-0 ml-auto">
+                <div id="createBranch" class="bg-info border border-1 border-dark custom_plus btn p-0 pt-1">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" class="bi bi-plus a-c" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="position: relative;">
+                    <g class="position-absolute" stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square" style="left: 10%; top:10%;"> <g transform="translate(1.000000, 1.000000)" stroke="#222222"> <path d="M0,11 L22,11"></path> <path d="M11,0 L11,22"></path> </g> </g>
+                </svg>
+                </div>
+            </div>        
+        </div>
+    </div>
+    <div id="createField" class="position-absolute w-100 top-0" style="z-index: 1">
+                            <div class="container">
+                                <div class="mx-auto w-100" style="max-width: 860px;">
+                                    <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                                        <div  class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                                        <h2 class="text-danger createForm">Create form</h2>
+                                        <form class="createForm"  action="http://localhost:8080/login" method="post">
+                                            <div class="form-group createForm">
+                                                <label class="createForm" for="create">Name Branch</label>
+                                                    <input id="create" class="form-control createForm" name="username"/>
+                                            </div>
+                                            <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
     <div>
         <div  class="container clearfix p-0">
             <div class="position-relative clearfix ">

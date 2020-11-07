@@ -81,8 +81,8 @@ func (h *Handler) GetBranch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	rows, err := h.DB.Query(
-		"select * from amaker.theme as theme where theme.idbranch = ?", vars["id"])
+	//rows, err := h.DB.Query(
+	//	"select * from amaker.theme as theme where theme.idbranch = ?", vars["id"])
 
 }
 

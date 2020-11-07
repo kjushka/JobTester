@@ -62,22 +62,22 @@ func (h *Handler) EditWorker(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
-func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
-	username, role, status := h.checkCookie(w, r)
-	if !status {
-		return
-	}
-	if role != 1 {
-		http.Redirect(w, r, "/home/worker/"+username, http.StatusFound)
-		return
-	}
-	company, err := h.findUser(username)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	h.Tmpl.ExecuteTemplate(w, "company.html", company)
-}
+//func (h *Handler) GetCompany(w http.ResponseWriter, r *http.Request) {
+//	username, role, status := h.checkCookie(w, r)
+//	if !status {
+//		return
+//	}
+//	if role != 1 {
+//		http.Redirect(w, r, "/home/worker/"+username, http.StatusFound)
+//		return
+//	}
+//	company, err := h.findUser(username)
+//	if err != nil {
+//		http.Error(w, err.Error(), http.StatusInternalServerError)
+//		return
+//	}
+//	h.Tmpl.ExecuteTemplate(w, "company.html", company)
+//}
 
 func (h *Handler) EditCompany(w http.ResponseWriter, r *http.Request) {
 	username, role, status := h.checkCookie(w, r)

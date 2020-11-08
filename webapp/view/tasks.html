@@ -4,10 +4,13 @@
     <title>Задания</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+            integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
-    <!--script src="../resources/js.js" type="text/javascript"></script-->
+    <script src="../resources/branch.js" type="text/javascript"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
             crossorigin="anonymous"></script>
@@ -59,8 +62,159 @@
         {{.Branch.Name}}
     </h2>
 </div>
+<div id="crTheme" class="position-absolute border border-1 border-dark cr crtheme d-block bg-success"
+     style=" right: 1%;width: 40px; height: 40px;">
+    <a href="#" title="Создать новую тему">
+        <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+            <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" class>
+                <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                    <g transform="translate(1.000000, 1.000000)" stroke="#222222">
+                        <path d="M0,11 L22,11"></path>
+                        <path d="M11,0 L11,22"></path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </a>
+</div>
+<div id="createThemeField" class="position-absolute w-100 top-0" style="z-index: 1">
+    <div class="container">
+        <div class="mx-auto w-100" style="max-width: 860px;">
+            <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                <div class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                    <h2 class="text-danger createForm">Create themes form</h2>
+                    <form class="createthemeForm createForm"
+                          action="http://localhost:8080/branches/{{.UName}}/{{.Branch.Idbranch}}/add-theme"
+                          method="post">
+                        <div class="form-group createForm">
+                            <label class="createForm" for="createTheme">Name Theme</label>
+                            <input id="createTheme" class="form-control createForm" name="name"/>
+                        </div>
+                        <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="createTaskField" class="position-absolute w-100 top-0" style="z-index: 1">
+    <div class="container">
+        <div class="mx-auto w-100" style="max-width: 860px;">
+            <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                <div class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                    <h2 class="text-danger createForm">Create task form</h2>
+                    <form class="createtaskForm createForm"
+                          action="http://localhost:8080/branches/{{.UName}}/{{.Branch.Idbranch}}/add-task"
+                          method="post">
+                        <div class="form-group createForm">
+                            <label class="createForm" for="createTask">Name Task</label>
+                            <input id="createTask" class="form-control createForm" name="name"/>
+                        </div>
+                        <div class="form-group createForm">
+                            <label class="createForm" for="createInfo">Info Task</label>
+                            <input id="createInfo" class="form-control createForm infotask" name="text"/>
+                        </div>
+                        <div class="d-none form-group createForm">
+                            <input id="create" class="form-control createForm" name="idtheme" value="0"/>
+                        </div>
+                        <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newTaskField" class="position-absolute w-100 top-0">
+    <div class="container">
+        <div class="mx-auto w-100" style="max-width: 860px;">
+            <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                <div class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                    <h2 class="text-danger createForm">Edit Task</h2>
+                    <form class="createtaskForm createForm"
+                          action="http://localhost:8080/branches/{{.UName}}/{{.Branch.Idbranch}}/edit-task"
+                          method="post">
+                        <div class="form-group createForm">
+                            <label class="createForm" for="newnametask">New Name Task</label>
+                            <input id="newnametask" class="form-control createForm" name="newName"/>
+                        </div>
+                        <div class="form-group createForm">
+                            <label class="createForm" for="newinfotask">New Info Task</label>
+                            <input id="newinfotask" class="form-control createForm infotask" name="newText"/>
+                        </div>
+                        <div class="d-none">
+                            <input id="newTaskid" name="idtask">
+                        </div>
+                        <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newThemeField" class="position-absolute w-100 top-0">
+    <div class="container">
+        <div class="mx-auto w-100" style="max-width: 860px;">
+            <div class="vh-100 align-middle d-table-cell position-relative" style="width: 860px;">
+                <div class="a-c mx-auto bg-light pb-3 px-3 createForm" style="width: 400px;">
+                    <h2 class="text-danger createForm">Edit Task and Theme</h2>
+                    <form class="createtthemeForm createForm"
+                          action="http://localhost:8080/branches/{{.UName}}/{{.Branch.Idbranch}}/edit-theme"
+                          method="post">
+                        <div class="form-group createForm">
+                            <label class="createForm" for="newnametheme">New Name Theme</label>
+                            <input id="newnametheme" class="form-control createForm" name="newName"/>
+                        </div>
+                        <div class="d-none">
+                            <input id="newThemeid" name="idtheme">
+                        </div>
+                        <button type="submit" id="btn-createbr" class="btn btn-primary mt-3">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {{range .Branch.Themes}}
-    <div class="container" style="height: 271px; position: relative; overflow: auto">
+    <div class="container theme" style="height: 271px; position: relative; overflow: auto">
+        <div class="position-absolute edittheme border border-1 border-dark">
+            <div class="btn px-4 py-2" style="font-size: 25px;">
+                Edit
+            </div>
+        </div>
+        <div id="delTheme" class="position-absolute border border-1 border-dark del deltheme bg-danger mt-1 mr-1"
+             style=" right: 3%;width: 40px; height: 40px; transform: rotate(-45deg);">
+            <a href="http://localhost:8080/branches/{{.Username}}/{{.Idbranch}}/delete-theme/{{.Idtheme}}">
+                <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" class>
+                        <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                            <g transform="translate(1.000000, 1.000000)" stroke="#222222">
+                                <path d="M0,11 L22,11"></path>
+                                <path d="M11,0 L11,22"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </a>
+        </div>
+        <div class="position-absolute border border-1 border-dark cr crtask bg-success mt-1"
+             style=" right: 8%;width: 40px; height: 40px;">
+            <a href="#" title="Создать новое задание">
+                <div class=" position-relative btn" style="right: 16%; bottom: 5%;">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" class>
+                        <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                            <g transform="translate(1.000000, 1.000000)" stroke="#222222">
+                                <path d="M0,11 L22,11"></path>
+                                <path d="M11,0 L11,22"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </a>
+            <div class="d-none idtheme" value="{{.Idtheme}}"></div>
+        </div>
         <h3 class="display-5">
             {{.Name}} <!--сюда должно приходить название темы-->
         </h3>
@@ -69,18 +223,36 @@
             <!-- Card to Open the Modal -->
             {{range .Tasks}}
                 <div class="col col-md-3">
-                    <div class="card mycolor" data-toggle="modal" data-target="#modal1">
-                        <!--onmouseover="this.style.background='rgba(225,225,0,0.3)'"
-                        onmouseout="this.style.background='white'"--> <!--сюда должно приходить число(номер задания)-->
+                    <div class="card mycolor task" data-toggle="modal" data-target="#modal{{.Idtask}}">
+                        <div id="deltask"
+                             class="position-absolute border border-1 border-dark del deltask bg-danger mt-1 mr-1"
+                             style=" right: 0;width: 30px; height: 30px; transform: rotate(-45deg);">
+                            <a href="http://localhost:8080/branches/{{.Username}}/{{.Idbranch}}/delete-task/{{.Idtask}}">
+                                <div class=" position-relative btn" style="right: 38%; bottom: 23.4%;">
+                                    <svg width="24px" height="24px" viewBox="0 0 24 24"
+                                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         class>
+                                        <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd"
+                                           stroke-linecap="square">
+                                            <g transform="translate(1.000000, 1.000000)" stroke="#222222">
+                                                <path d="M0,11 L22,11"></path>
+                                                <path d="M11,0 L11,22"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
                         <div class="card-header text-center">Задание</div>
                         <!--сюда должно приходить число(номер задания)-->
                         <div class="card-body text-center">
                             <p class="card-text">{{.Name}}</p> <!--сюда должно приходить краткое задание-->
                         </div>
+                        <div class="d-none id" value="{{.Idtask}}"></div>
                     </div>
 
                     <!-- The Modal -->
-                    <div class="modal fade" id="modal1"> <!--сюда должно приходить число(номер задания)-->
+                    <div class="modal fade" id="modal{{.Idtask}}"> <!--сюда должно приходить число(номер задания)-->
                         <div class="modal-dialog  modal-lg">
                             <div class="modal-content">
 
@@ -90,7 +262,11 @@
                                     <!--сюда должно приходить число(номер задания)-->
                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                 </div>
-
+                                <div class="position-absolute edit border border-1 border-dark">
+                                    <div class="btn px-4 py-2" style="font-size: 25px;">
+                                        Edit
+                                    </div>
+                                </div>
                                 <!-- Modal body -->
                                 <div class="modal-body text-center">
                                     <p class="card-text">{{.Text}}</p> <!--сюда должно приходить полное задание-->

@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	"strconv"
 )
@@ -11,6 +12,7 @@ type LogErr struct {
 }
 
 func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Home")
 	cName, err := r.Cookie("user-name")
 	if err != http.ErrNoCookie {
 		cRole, err := r.Cookie("user-role")
@@ -40,6 +42,8 @@ func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) HomeWorker(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("HomeW")
+
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return
@@ -57,6 +61,7 @@ func (h *Handler) HomeWorker(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) EditWorker(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("EW")
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return
@@ -74,6 +79,7 @@ func (h *Handler) EditWorker(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) HomeCompany(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("HomeC")
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return
@@ -91,6 +97,7 @@ func (h *Handler) HomeCompany(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) EditCompany(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("EC")
 	username, role, status := h.checkCookie(w, r)
 	if !status {
 		return

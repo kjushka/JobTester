@@ -1,3 +1,12 @@
+#newTaskField{
+    overflow: hidden;
+    display:none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1100;
+}
 #loginField {
     overflow: hidden;
     display:none;
@@ -22,11 +31,58 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
+#createTaskField {
+    overflow: hidden;
+    display:none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+#createThemeField {
+    overflow: hidden;
+    display:none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+#newThemeField{
+    overflow: hidden;
+    display:none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1100;
+}
 
+.answer {
+    height: 200px;
+    width: 600px;
+}
 .custom_plus {
     border-radius: 100px;
     width: 40px;
     height: 40px;
+}
+.edit {
+    border-radius: 35%;
+    top:6%;
+    left:15%;
+}
+.edittheme {
+    display: none;
+    border-radius: 35%;
+    top:3%;
+    left:17%;
+}
+.theme:hover .edittheme {
+    display: block;
+}
+.infotask {
+    white-space:pre-wrap;
+    height: 100px;
 }
 .logout {
     display: inline;
@@ -70,7 +126,20 @@
     display: none;
     border-radius: 100px;
 }
+.cr {
+    display: none;
+    border-radius: 100px;
+}
 .branchDiv:hover .del {
+    display: block;
+}
+.theme:hover .deltheme {
+    display:block;
+}
+.theme:hover .crtask {
+    display: block;
+}
+.task:hover .deltask {
     display: block;
 }
 

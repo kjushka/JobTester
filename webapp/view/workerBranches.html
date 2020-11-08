@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Задания</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+            integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
+    <script src="../resources/branch.js" type="text/javascript"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="header border-bottom border-dark border-3">
+    <div class="container headerdiv">
+        <div class=" col col-2 d-inline float-left h-100 clearfix position-relative">
+            <div class="align-middle">
+                <a id="hmenu" class="btn " href="http://localhost:8080/home">Home</a>
+            </div>
+        </div>
+        <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
+            <div class="h-100 btn d-inline mx-2 border border-1 border-dark float-left">
+                <a href="http://localhost:8080/companies">Поиск команий</a>
+            </div>
+            <div class="h-100 btn d-inline mx-2 border border-1 border-dark float-left">
+                <a href="/branches/worker/{{ .UName}}">Доступные ветви</a>
+            </div>
+        </div>
+        <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
+            <ul class="headerUl">
+                <li class="logout">
+                    <p class="navbar-text d-inline pr-4">
+                        Welcome
+                        <span id="userinfo">{{ .UName}}</span>
+                    </p>
+                    <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
+                    <form id="logout-form" method="post">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="div1">
+    <div class="container a-c">
+        <h2>Список веток</h2>
+    </div>
+</div>
+<div>
+    <div>
+        <div class="container clearfix p-0">
+            <div class="position-relative clearfix ">
+                {{range .Branches}}
+                    <div class="branchDiv w-100 border border-2 float-left border-dark a-c d-inline position-relative mb-3">
+                        <a class="h-100 btn w-100" href="http://localhost:8080/branches/worker/{{ .Username}}/{{ .Idbranch}}">
+                            <div class="position-relative branchtext">{{.Name}}</div>
+                        </a>
+                    </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

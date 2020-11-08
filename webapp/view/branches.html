@@ -14,17 +14,28 @@
 <body>
 <div class="header border-bottom border-dark border-3">
     <div class="container headerdiv">
-        <div class=" col col-5 d-inline float-left h-100 clearfix position-relative">
+        <div class=" col col-2 d-inline float-left h-100 clearfix position-relative">
             <div class="align-middle">
                 <a id="hmenu" class="btn " href="http://localhost:8080/home">Home</a>
             </div>
         </div>
-        <div class="col col-7 d-inline float-right h-100 clearfix position-relative ">
+        <div class="col-5 d-inline  float-left h-100 clearfix position-relative">
+            <div class=" btn d-inline mx-2 border border-1 border-dark">
+                <a class="" href="http://localhost:8080/requests/{{.UName}}">Запросы</a>
+            </div>
+            <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                <a href="http://localhost:8080/answers/{{.UName}}">Ответы</a>
+            </div>
+            <div class="h-100 btn d-inline mx-2 border border-1 border-dark">
+                <a href="http://localhost:8080/branches/{{.UName}}">Ветки</a>
+            </div>
+        </div>
+        <div class="col col-5 d-inline float-right h-100 clearfix position-relative ">
             <ul class="headerUl">
-                <li class="d-inline">
+                <li class="logout">
                     <p class="navbar-text d-inline pr-4">
                         Welcome
-                        <span id="userinfo">{{.UName}}</span>
+                        <span id="userinfo">{{ .UName}}</span>
                     </p>
                     <p class="navbar-text d-inline"><a id="logout" href="http://localhost:8080/logout">Logout</a></p>
                     <form id="logout-form" method="post">
@@ -95,8 +106,6 @@
                 {{end}}
             </div>
         </div>
-
-        <div></div>
     </div>
 </div>
 </body>

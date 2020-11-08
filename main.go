@@ -66,6 +66,7 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println("Reg")
+
 	username := r.FormValue("username")
 	_, err := h.findUser(username)
 	if err != nil {
@@ -219,33 +220,46 @@ func main() {
 
 	router.HandleFunc("/branches/{username}", handler.GetBranches).Methods("GET")
 	router.HandleFunc("/branches/{username}/{id:[0-9]+}", handler.GetBranch).Methods("GET")
-	router.HandleFunc("/branches/{username}/{id:[0-9]+}", handler.EditBranch).Methods("POST")
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/add-task", handler.AddTask).Methods("POST")
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/add-theme", handler.AddTheme).Methods("POST")
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/edit-task", handler.EditTask).Methods("POST")
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/edit-theme", handler.EditTheme).Methods("POST")
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/delete-theme/{idTheme:[0-9]+}", handler.DeleteTheme)
+	router.HandleFunc("/branches/{username}/{idBranch:[0-9]+}/delete-task/{idTask:[0-9]+}", handler.DeleteTask)
 	router.HandleFunc("/branches/{username}/{id:[0-9]+}/delete", handler.DeleteBranch).Methods("GET")
 	router.HandleFunc("/branches/{username}/create", handler.CreateBranch).Methods("POST")
+
+	router.HandleFunc("/answers/{username}", handler.GetAnswers).Methods("GET")
+	router.HandleFunc("/answers/{username}/{id:[0-9]+}/right", handler.SetAnswerRight).Methods("GET")
+	router.HandleFunc("/answers/{username}/{id:[0-9]+}/wrong", handler.SetAnswerWrong).Methods("GET")
+
+	router.HandleFunc("/branches/worker/{username}", handler.GetWorkerBranches).Methods("GET")
+	router.HandleFunc("/branches/worker/{username}/{idBranch}", handler.GetWorkerCurrentBranch).Methods("GET")
 	router.HandleFunc(
-		"/branches/{username}/{id}/send-answer/{idtask}",
+		"/branches/worker/{username}/{idBranch}/send-answer/{idtask}",
 		handler.SendAnswer,
 	).Methods("POST")
 
-	router.HandleFunc("/answers/{username}", handler.GetAnswers).Methods("GET")
-	router.HandleFunc("/answers/{username}/{id}", handler.GetAnswer).Methods("GET")
-	router.HandleFunc("/answers/{username}/{id}/status", handler.SetAnswerStatus).Methods("POST")
-	router.HandleFunc("/answers/{username}/{id}/download", handler.DownloadAnswer).Methods("GET")
-
-	/*router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
-	router.HandleFunc("/companies/{id}", handler.GetCompany).Methods("GET")
-	router.HandleFunc("/companies/{id}/request", handler.SendRequest).Methods("POST")
+	router.HandleFunc("/companies", handler.GetCompanies).Methods("GET")
+	router.HandleFunc("/companies/{idComp}", handler.GetCompany).Methods("GET")
+	router.HandleFunc("/companies/{idComp}/{idBranch}/request", handler.SendRequest).Methods("GET")
 
 	router.HandleFunc("/requests/{username}", handler.GetRequests).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}", handler.GetRequest).Methods("GET")
-	router.HandleFunc("/requests/{username}/{id}/access", handler.SetBranchAccess).Methods("POST")*/
+	router.HandleFunc("/requests/{iduser}/{idbranch}/accepted", handler.AcceptRequest).Methods("GET")
+	router.HandleFunc("/requests/{iduser}/{idbranch}/decline", handler.DeclineRequest).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{idBranch}", handler.GetRequest).Methods("GET")
+	//router.HandleFunc("/requests/{username}/{idBranch}/access", handler.SetBranchAccess).Methods("POST")
 
 	router.HandleFunc("/resources/home.js", handler.SendHomeJs)
 	router.HandleFunc("/resources/css.css", handler.SendCssCss)
+	router.HandleFunc("/branches/resources/branch.js", handler.SendBranchJs)
 	router.HandleFunc("/resources/branches.js", handler.SendBranchesJs)
 	router.HandleFunc("/resources/branches.css", handler.SendBranchesCss)
 	router.HandleFunc("/home/resources/branches.css", handler.SendBranchesCss)
 	router.HandleFunc("/branches/resources/branches.css", handler.SendBranchesCss)
+	router.HandleFunc("/branches/resources/branches.js", handler.SendBranchesJs)
+	router.HandleFunc("/branches/worker/resources/branches.css", handler.SendBranchesCss)
+	router.HandleFunc("/branches/worker/resources/branches.js", handler.SendBranchesJs)
 
 	fmt.Println("Listen port 8080")
 	http.ListenAndServe(":8080", router)

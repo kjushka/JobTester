@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Поиск работодателя</title>
+    <title>Компания</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+          integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+            integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
             integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../resources/branches.css" type="text/css"/>
 </head>
 
 <body>
@@ -49,27 +52,46 @@
 </div>
 <div class="col d-flex justify-content-center">
     <h2 class="display-2">
-        Kомпании <!--сюда должно приходить название компании-->
+        {{.Company.Name}} <!--сюда должно приходить название компании-->
     </h2>
 </div>
-
 <div class="container-fluid" style="position: relative; overflow: auto">
-    <div class="row row-cols-4 row-cols-md-3 g-2 d-flex justify-content-center">
-        {{range .Companies}}
+    <div class="row row-cols-5 row-cols-md-4 g-2 d-flex justify-content-center">
+
+        {{range .Branches}}
             <div class="col col-md-3">
-                <div class="card" onclick="document.location.href='companies/{{.Iduser}}'">
-                    <div class="card-header text-center">{{.Name}}</div>
+
+                <div class="card" data-toggle="modal" data-target="#modal{{.Count}}">
+                    <!--сюда должно приходить число(колво веток)-->
                     <div class="card-body text-center">
-                        <p class="card-text">{{.Name}}</p>
+                        <p class="card-text">{{.Branch.Name}}</p> <!--сюда должно приходить название ветки-->
                     </div>
                 </div>
 
+                <!-- The Modal -->
+                <div class="modal fade" id="modal{{.Count}}"> <!--сюда должно приходить число(колво веток)-->
+                    <div class="modal-dialog  modal-md">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title text-center">Поработаем?</h4>
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body text-center">
+                                <button type="button" class="btn btn-light" data-dismiss="modal"
+                                        onclick="document.location.href='{{.Iduser}}/{{.Branch.Idbranch}}/request'">Хочу
+                                    работать!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         {{end}}
     </div>
-
 </div>
-
 </body>
-
 </html>

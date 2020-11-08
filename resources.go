@@ -35,6 +35,16 @@ func (h *Handler) SendHomeJs(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
+func (h *Handler) SendBranchJs(w http.ResponseWriter, r *http.Request) {
+	data, err := ioutil.ReadFile("./webapp/resources/branch.js")
+	if err != nil {
+		http.Error(w, "Couldn't read file", http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/javascript; charset=utf-8")
+	w.Write(data)
+}
+
 func (h *Handler) SendCssCss(w http.ResponseWriter, r *http.Request) {
 	data, err := ioutil.ReadFile("./webapp/resources/css.css")
 	if err != nil {

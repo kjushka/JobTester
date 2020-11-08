@@ -29,6 +29,7 @@ type Theme struct {
 	Idbranch int
 	Index    int
 	Tasks    []*Task
+	Username string
 }
 
 func (t *Theme) String() string {
@@ -42,11 +43,13 @@ func (t *Theme) String() string {
 }
 
 type Task struct {
-	Idtask  int
-	Name    string
-	Text    string
-	Idtheme int
-	Answer  *Answer
+	Idtask   int
+	Name     string
+	Text     string
+	Idtheme  int
+	Answer   *Answer
+	Username string
+	Idbranch int
 }
 
 func (t *Task) String() string {
